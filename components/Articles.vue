@@ -1,7 +1,6 @@
 <template>
-  <div class="w_index">
-    <Menu />
-    <Articles />
+  <div>
+    Articles
   </div>
 </template>
 
@@ -12,9 +11,5 @@
 </script>
 
 <style lang="scss" scoped>
-
-.w_index {
-  padding: 2.778vw 0 0 4.167vw;
-}
 
 </style>
