@@ -1,0 +1,6 @@
+query {
+  page(id: "cG9zdDoxMA==") {
+    title
+    content
+  }
+}

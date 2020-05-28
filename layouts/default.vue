@@ -1,6 +1,7 @@
 <template>
-  <div>
-    <nuxt />
+  <div class="w_app">
+      <Menu/>
+      <nuxt />
   </div>
 </template>
 
@@ -31,8 +32,7 @@ h1 {
   color: #222222;
 }
 
-.button--grey:hover {
-  color: #fff;
-  background-color: #35495e;
+.w_app {
+  padding: 2.778vw 0 0 4.167vw;
 }
 </style>

@@ -1,0 +1,14 @@
+query {
+  posts {
+    nodes {
+      id
+      title
+      excerpt
+      acfArticles {
+        image {
+          mediaItemUrl
+        }
+      }
+    }
+  }
+}
