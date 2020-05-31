@@ -11,11 +11,6 @@
   import page from '~/queries/getInfos.gql';
   export default {
 
-    data() {
-        return {
-          page: null
-        }
-      },
     
     apollo: {
       page: {

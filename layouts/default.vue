@@ -35,4 +35,9 @@ h1 {
 .w_app {
   padding: 2.778vw 0 0 4.167vw;
 }
+
+a {
+  text-decoration: none;
+  color: #000;
+}
 </style>
