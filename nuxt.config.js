@@ -49,7 +49,12 @@ export default {
   ** Nuxt.js modules
   */
   modules: [
+    '@nuxtjs/axios',
   ],
+  axios: {
+    baseURL: 'http://localhost:8888/jeanmarquesv5/wp-json',
+    debug: true
+  },
   /*
   ** Build configuration
   */

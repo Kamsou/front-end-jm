@@ -1,10 +1,10 @@
 <template>
-  <div class="w_menu">
-    <h1>{{generalSettings.title}}</h1>
+  <div class="w_menu" >
+      <h1>{{generalSettings.title}}</h1>
     <ul>
-      <li v-for="menu in menus.edges[0].node.menuItems.nodes" :key="menu.id">
-        {{ menu.label }}
-      </li>
+        <li v-for="menu in menus.edges[0].node.menuItems.nodes" :key="menu.id">
+          <nuxt-link :to="`${menu.url}`">{{ menu.label }}</nuxt-link>
+        </li>
     </ul>
   </div>
 </template>
@@ -13,6 +13,14 @@
   import gql from 'graphql-tag';
 
   export default {
+
+    data() {
+      return {
+        menus: null,
+        generalSettings: null,
+      }
+    },
+
     
     apollo: {
       menus: gql`
@@ -26,6 +34,7 @@
                   nodes {
                     label
                     id
+                    url
                   }
                 }
               }
@@ -40,7 +49,7 @@
           title
         }
       }
-      `
+      `,
     }
 
   }
