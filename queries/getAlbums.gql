@@ -1,0 +1,19 @@
+query {
+  albums {
+    nodes {
+      id
+      title
+      slug
+      acfAlbums {
+        imageDeCouverture {
+          mediaItemUrl
+        }
+        serieDimages {
+          id
+          mediaItemUrl
+          title
+        }
+      }
+    }
+  }
+}
