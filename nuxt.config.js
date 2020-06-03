@@ -40,7 +40,7 @@ export default {
   apollo: {
     clientConfigs: {
       default: {
-      httpEndpoint: "http://front-jeanmarques.dendeaproduction.com/graphql",
+      httpEndpoint: "https://front-jeanmarques.dendeaproduction.com/graphql",
       }
     }
   },
@@ -52,7 +52,7 @@ export default {
     '@nuxtjs/axios',
   ],
   axios: {
-    baseURL: 'http://front-jeanmarques.dendeaproduction.com/graphql',
+    baseURL: 'https://front-jeanmarques.dendeaproduction.com/graphql',
     debug: true
   },
   /*
