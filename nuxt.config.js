@@ -52,7 +52,7 @@ export default {
     '@nuxtjs/axios',
   ],
   axios: {
-    baseURL: 'http://localhost:8888/jeanmarquesv5/wp-json',
+    baseURL: 'http://front-jeanmarques.dendeaproduction.com/graphql',
     debug: true
   },
   /*
@@ -64,5 +64,12 @@ export default {
     */
     extend (config, ctx) {
     }
+  },
+  generate: {
+    routes: [
+      '/',
+      '/work',
+      '/info',
+    ],
   }
 }
