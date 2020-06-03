@@ -40,7 +40,7 @@ export default {
   apollo: {
     clientConfigs: {
       default: {
-      httpEndpoint: "http://localhost:8888/jeanmarquesv5/graphql",
+      httpEndpoint: "http://front-jeanmarques.dendeaproduction.com/graphql",
       }
     }
   },
