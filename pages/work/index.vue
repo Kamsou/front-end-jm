@@ -47,4 +47,30 @@ import albums from '~/queries/getAlbums.gql';
   }
 }
 
+/*$$$$$$$$$$$$$$$$$$ MOBILE $$$$$$$$$$$$$$$$$$$*/
+@media screen and (max-width: 768px) {
+
+.w_bloc_albums {
+  display: block;
+
+  .w_albums {
+    padding-top: 13.333vw;
+    /* padding-left: 2.083vw; */
+    width: 100%;
+
+    .image {
+      width:100%;
+    }
+    .c_imgTitle {
+      text-align: center;
+
+      .title {
+        padding-top: 4vw;
+      }
+    }
+  }
+}
+
+}
+
 </style>

@@ -40,4 +40,16 @@ a {
   text-decoration: none;
   color: #000;
 }
+/*$$$$$$$$$$$$$$$$$$ MOBILE $$$$$$$$$$$$$$$$$$$*/
+@media screen and (max-width: 768px) {
+
+  html, h1 {
+    font-size: 3.733vw;
+  }
+
+  .w_app {
+    padding: 16vw 8vw 10.667vw;
+  }
+
+}
 </style>

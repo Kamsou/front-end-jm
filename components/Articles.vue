@@ -46,4 +46,31 @@ import posts from '~/queries/getPosts.gql';
   }
 }
 
+/*$$$$$$$$$$$$$$$$$$ MOBILE $$$$$$$$$$$$$$$$$$$*/
+@media screen and (max-width: 768px) {
+
+.w_posts {
+  padding-top: 5.333vw;
+  padding-left: 0;
+
+  &:last-child {
+    padding-bottom: 3.389vw;
+  }
+
+  .image {
+    width: 100%;
+  }
+  .b_text {
+    width: 100%;
+    padding: 4vw 0;
+
+    .title {
+      padding-bottom: 0.694vw;
+    }
+  }
+}
+
+
+}
+
 </style>

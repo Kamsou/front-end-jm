@@ -29,4 +29,12 @@
   font-size: 1.111vw;
 }
 
+/*$$$$$$$$$$$$$$$$$$ MOBILE $$$$$$$$$$$$$$$$$$$*/
+@media screen and (max-width: 768px) {
+  .content_infos {
+  padding-top: 9.917vw;
+  font-size: 6.111vw;
+}
+}
+
 </style>
