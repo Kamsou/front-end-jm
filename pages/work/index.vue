@@ -54,7 +54,7 @@ import albums from '~/queries/getAlbums.gql';
   display: block;
 
   .w_albums {
-    padding-top: 13.333vw;
+    padding-top: 5.333vw;
     /* padding-left: 2.083vw; */
     width: 100%;
 
