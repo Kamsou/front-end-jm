@@ -1,7 +1,7 @@
 <template>
   <div v-if="!$apollo.queries.posts.loading">
     <div class="w_posts" v-for="post in posts.nodes" :key="post.id">
-      <img class="image" :src="post.acfArticles.image.mediaItemUrl"/>
+      <img v-if="post.acfArticles.image !== null" class="image" :src="post.acfArticles.image.mediaItemUrl"/>
       <div class="b_text">
         <p class="title">{{post.title}}</p>
         <div v-html="post.excerpt"></div>
