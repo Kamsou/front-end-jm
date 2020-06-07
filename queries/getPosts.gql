@@ -3,8 +3,8 @@ query {
     nodes {
       id
       title
-      excerpt
       acfArticles {
+        text
         image {
           mediaItemUrl
         }

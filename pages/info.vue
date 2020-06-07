@@ -1,7 +1,6 @@
 <template>
 <div v-if="!$apollo.queries.page.loading">
     <div class="content_infos" v-html="page.content"></div>
-    
 </div>
 
 </template>

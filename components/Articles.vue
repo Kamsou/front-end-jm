@@ -4,7 +4,7 @@
       <img v-if="post.acfArticles.image !== null" class="image" :src="post.acfArticles.image.mediaItemUrl"/>
       <div class="b_text">
         <p class="title">{{post.title}}</p>
-        <div v-html="post.excerpt"></div>
+        <div v-html="post.acfArticles.text"></div>
       </div>
     </div>
   </div>
