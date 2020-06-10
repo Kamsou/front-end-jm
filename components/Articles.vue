@@ -3,8 +3,15 @@
     <div class="w_posts" v-for="post in posts.nodes" :key="post.id">
       <img v-if="post.acfArticles.image !== null" class="image" :src="post.acfArticles.image.mediaItemUrl"/>
       <div class="b_text">
-        <p class="title">{{post.title}}</p>
-        <div v-html="post.acfArticles.text"></div>
+        <p 
+        :style="'font-size:'+`${post.acfSizeFont.titreTaille}`+'vw'" 
+        class="title">
+          {{post.title}}
+        </p>
+        <div 
+        class="paragraph"
+        :style="'font-size:'+`${post.acfSizeFont.corpsDeTexteTaille}`+'vw'" 
+        v-html="post.acfArticles.text"></div>
       </div>
     </div>
   </div>
@@ -66,6 +73,10 @@ import posts from '~/queries/getPosts.gql';
 
     .title {
       padding-bottom: 0.694vw;
+      font-size: 4vw !important;
+    }
+    .paragraph {
+      font-size: 3vw !important;
     }
   }
 }

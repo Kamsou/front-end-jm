@@ -15,7 +15,6 @@
       page: {
         query: page
       },
-      
     },
 
   }

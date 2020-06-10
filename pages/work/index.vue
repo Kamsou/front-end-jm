@@ -36,7 +36,6 @@ import albums from '~/queries/getAlbums.gql';
 
     .image {
       width: 14.583vw;
-      transition: 2s all; 
     }
     .c_imgTitle {
       text-align: center;

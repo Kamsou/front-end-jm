@@ -1,15 +1,29 @@
 <template>
-  <div class="w_app">
+  <div 
+  v-if="!$apollo.queries.page.loading" 
+  class="w_app" 
+  :style="'font-family:'+`${page.acfNomTypo.nomDeLaTypo}`" >
       <Menu/>
       <nuxt />
   </div>
 </template>
 
+<script>
+  import page from '~/queries/getTypo.gql';
+export default {
+  apollo: {
+      page: {
+        query: page
+      },
+    },
+}
+</script>
+
 <style>
 html {
   font-family: serif, -apple-system, BlinkMacSystemFont, 'Segoe UI',
     Roboto, 'Helvetica Neue', Arial, sans-serif;
-  font-size: 0.972vw;
+  /* font-size: 0.972vw; */
   color: #222222;
   word-spacing: 1px;
   -ms-text-size-adjust: 100%;

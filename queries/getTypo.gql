@@ -1,0 +1,7 @@
+query {
+  page(id: "cG9zdDoxOA==") {
+    acfNomTypo {
+      nomDeLaTypo
+    }
+  }
+}
