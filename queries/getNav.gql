@@ -1,0 +1,8 @@
+query {
+  page(id: "cG9zdDoxOA==") {
+    acfNav {
+      tailleDuTitre
+      tailleDuMenu
+    }
+  }
+}
