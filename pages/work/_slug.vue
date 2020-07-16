@@ -94,6 +94,7 @@ import albums from '~/queries/getAlbums.gql';
     apollo: {
       albums: {
         query: albums,
+        prefetch: true,
         prefetch({route}) {
           return {
             slug: route.params.slug

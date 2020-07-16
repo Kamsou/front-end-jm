@@ -9,7 +9,7 @@
 //   return routes
 // }
 
-
+const { createApolloFetch } = require('apollo-fetch')
 
 export default {
   mode: 'universal',
