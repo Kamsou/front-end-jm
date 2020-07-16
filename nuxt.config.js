@@ -1,3 +1,15 @@
+import axios from "axios"
+let dynamicRoutes = () => {
+  const routes = axios
+    .get("http://front-jeanmarques.dendeaproduction.com/wp-json/wp/v2/albums")
+    .then(res => {
+      return res.data.map(album => `/${album.slug}`)
+    })
+  // console.log(routes)
+  return routes
+}
+
+
 
 export default {
   mode: 'universal',
@@ -66,10 +78,11 @@ export default {
     }
   },
   generate: {
-    routes: [
-      '/',
-      '/work',
-      '/info',
-    ],
+    // routes: [
+    //   '/',
+    //   '/work',
+    //   '/info',
+    // ],
+    dynamicRoutes
   }
 }

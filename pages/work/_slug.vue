@@ -43,7 +43,6 @@
 
 <script>
 
-import gql from 'graphql-tag';
 import albums from '~/queries/getAlbums.gql';
 
   export default {
