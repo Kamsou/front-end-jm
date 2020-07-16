@@ -4,13 +4,13 @@
       <img v-if="post.acfArticles.image !== null" class="image" :src="post.acfArticles.image.mediaItemUrl"/>
       <div class="b_text">
         <p 
-        :style="'font-size:'+`${post.acfSizeFont.titreTaille}`+'vw'" 
+        :style="'font-size:'+`${post.acfSizeFont.titreTaille}`+'px'" 
         class="title">
           {{post.title}}
         </p>
         <div 
         class="paragraph"
-        :style="'font-size:'+`${post.acfSizeFont.corpsDeTexteTaille}`+'vw'" 
+        :style="'font-size:'+`${post.acfSizeFont.corpsDeTexteTaille}`+'px'" 
         v-html="post.acfArticles.text"></div>
       </div>
     </div>
@@ -24,6 +24,7 @@ import posts from '~/queries/getPosts.gql';
   export default {
     apollo: {
       posts: {
+        prefetch: true,
         query: posts
       }
     },

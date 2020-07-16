@@ -94,6 +94,7 @@ import albums from '~/queries/getAlbums.gql';
 
     apollo: {
       albums: {
+        prefetch: true,
         query: albums,
       }
     },

@@ -13,6 +13,7 @@
     
     apollo: {
       page: {
+        prefetch: true,
         query: page
       },
     },
@@ -24,14 +25,13 @@
 
 .content_infos {
   padding-top: 2.917vw;
-  font-size: 1.111vw;
+  font-size: 15px;
 }
 
 /*$$$$$$$$$$$$$$$$$$ MOBILE $$$$$$$$$$$$$$$$$$$*/
 @media screen and (max-width: 768px) {
   .content_infos {
   padding-top: 9.917vw;
-  font-size: 6.111vw;
 }
 }
 

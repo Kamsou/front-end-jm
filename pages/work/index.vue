@@ -18,6 +18,7 @@ import albums from '~/queries/getAlbums.gql';
   export default {
     apollo: {
       albums: {
+        prefetch: true,
         query: albums,
       }
     },
