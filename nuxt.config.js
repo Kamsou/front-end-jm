@@ -1,15 +1,15 @@
-// import axios from "axios"
-// let dynamicRoutes = () => {
-//   const routes = axios
-//     .get("http://front-jeanmarques.dendeaproduction.com/wp-json/wp/v2/albums")
-//     .then(res => {
-//       return res.data.map(album => `/${album.slug}`)
-//     })
-//   // console.log(routes)
-//   return routes
-// }
+import axios from "axios"
+let dynamicRoutes = () => {
+  const routes = axios
+    .get("http://front-jeanmarques.dendeaproduction.com/wp-json/wp/v2/albums")
+    .then(res => {
+      return res.data.map(album => `/${album.slug}`)
+    })
+  // console.log(routes)
+  return routes
+}
 
-const { createApolloFetch } = require('apollo-fetch')
+
 
 export default {
   mode: 'universal',
@@ -78,25 +78,11 @@ export default {
     }
   },
   generate: {
-    routes: function () {
-      const uri = 'https://front-jeanmarques.dendeaproduction.com/graphql'
-      const apolloFetch = createApolloFetch({ uri })
-      const query = `
-      {
-        albums {
-          edges {
-            node {
-              slug
-            }
-          }
-        }
-      }`
-      return apolloFetch({ query }).then(result => {
-        const { data } = result
-        return data.posts.map(post => `work/${post.slug}`)
-      }).catch(error => {
-        console.log(error)
-      })
-    }
+    // routes: [
+    //   '/',
+    //   '/work',
+    //   '/info',
+    // ],
+    dynamicRoutes
   }
 }
