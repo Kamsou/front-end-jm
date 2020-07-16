@@ -4,7 +4,7 @@
   <div v-if="!$apollo.queries.albums.loading" class="wrapper">
     <div class="carousel">
       <div class="w_albums" v-for="album in albums.nodes" :key="album.id">
-        <div class="condition_if" v-if="slug === album.slug">
+        <div class="condition_if">
           <div class="carousel" v-for="p in album.acfAlbums.serieDimages" :key="p.id">
             <img @click="prev" :src="p.mediaItemUrl" />
           </div>
@@ -42,7 +42,7 @@
 </template>
 
 <script>
-
+import gql from 'graphql-tag'
 import albums from '~/queries/getAlbums.gql';
 
   export default {
@@ -50,7 +50,7 @@ import albums from '~/queries/getAlbums.gql';
 
     data() {
       return {
-        slug: this.$route.params.slug,
+        // slug: this.$route.params.slug,
         indexSlide: 0,
       };
     },
@@ -93,8 +93,17 @@ import albums from '~/queries/getAlbums.gql';
 
     apollo: {
       albums: {
-        prefetch: true,
         query: albums,
+        prefetch({route}) {
+          return {
+            slug: route.params.slug
+          }
+        },
+        variables() {
+          return {
+            slug: this.$route.params.slug
+          }
+        }
       }
     },
   }
@@ -103,7 +112,7 @@ import albums from '~/queries/getAlbums.gql';
 <style lang="scss" scoped>
 
   .carousel {
-
+    display: flex;
     img {
       width: 34.722vw;
     }
