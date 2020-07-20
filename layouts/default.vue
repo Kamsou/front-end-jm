@@ -1,22 +1,17 @@
 <template>
-  <div>
+  <div class="w_app">
       <Menu/>
       <nuxt />
   </div>
 </template>
 
 <script>
-  // import page from '~/queries/getTypo.gql';
   import Menu from '@/components/Menu.vue';
+
   export default {
     components: {
       Menu
     }
-    // apollo: {
-    //     page: {
-    //       query: page
-    //     },
-    //   },
   }
 </script>
 

@@ -2,14 +2,13 @@
   <div class="w_menu" >
     
     <nuxt-link to="/">
-      <h1 :style="'font-size:'+`${page.acfNav.tailleDuTitre}`+'vw'" >{{generalSettings.title}}</h1>
+      <h1 :style="'font-size:'+`${page.acfNav.tailleDuTitre}`+'px'" >{{generalSettings.title}}</h1>
     </nuxt-link>
 
     <ul>
       <ul>
         <li v-for="menu in menus.edges[0].node.menuItems.nodes" :key="menu.id">
-            <!-- <nuxt-link :style="'font-size:'+`${page.acfNav.tailleDuMenu}`+'vw'"  :to="`${menu.url}`">{{ menu.label }}</nuxt-link> -->
-            {{menu.label}}
+            <nuxt-link :style="'font-size:'+`${page.acfNav.tailleDuMenu}`+'px'"  :to="`${menu.url}`">{{ menu.label }}</nuxt-link>
             
         </li>
         <a href="https://www.instagram.com/jeanmarques.jm/">
@@ -25,31 +24,28 @@
   import gql from 'graphql-tag';
   import page from '~/queries/getNav.gql';
 
-  const TEST = gql`
-         query MyQuery {
-           menus {
-             edges {
-               node {
-                 id
-                 name
-                 menuItems {
-                   nodes {
-                     label
-                     id
-                     url
-                   }
-                 }
-               }
-             }
-           }
-         },
-       `
+  const MENUS = gql`
+          query MyQuery {
+            menus {
+              edges {
+                node {
+                  id
+                  name
+                  menuItems {
+                    nodes {
+                      label
+                      id
+                      url
+                    }
+                  }
+                }
+              }
+            }
+          },
+        `
 
   export default {
 
-    // props: 
-    //   ['menus']
-    // ,
     data() {
       return {
         menus: []
@@ -58,7 +54,7 @@
     apollo: {
       
       menus: {
-        query: TEST
+        query: MENUS
       },
       page: {
         query: page
