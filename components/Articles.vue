@@ -1,17 +1,14 @@
 <template>
-  <div v-if="!$apollo.queries.posts.loading">
+  <div>
     <div class="w_posts" v-for="post in posts.nodes" :key="post.id">
       <img v-if="post.acfArticles.image !== null" class="image" :src="post.acfArticles.image.mediaItemUrl"/>
       <div class="b_text">
-        <p 
-  
-        class="title">
+        <p class="title">
           {{post.title}}
         </p>
         <div 
-        class="paragraph"
-    
-        v-html="post.acfArticles.text"></div>
+        class="paragraph"   
+        v-html="post.acfArticles.text"/>
       </div>
     </div>
   </div>
@@ -24,8 +21,8 @@ import posts from '~/queries/getPosts.gql';
   export default {
     apollo: {
       posts: {
+        query: posts,
         prefetch: true,
-        query: posts
       }
     },
   }

@@ -2,73 +2,49 @@
   <div class="w_menu" >
     
     <nuxt-link to="/">
-      <h1 :style="'font-size:'+`${page.acfNav.tailleDuTitre}`+'px'" >{{generalSettings.title}}</h1>
+      <h1 :style="'font-size:'+`${page.acfNav.tailleDuTitre}`+'px'" >
+        {{generalSettings.title}}
+      </h1>
     </nuxt-link>
 
     <ul>
-      <ul>
-        <li v-for="menu in menus.edges[0].node.menuItems.nodes" :key="menu.id">
-            <nuxt-link :style="'font-size:'+`${page.acfNav.tailleDuMenu}`+'px'"  :to="`${menu.url}`">{{ menu.label }}</nuxt-link>
-            
-        </li>
-        <a href="https://www.instagram.com/jeanmarques.jm/">
-          <img class="logo_instagram" src="@/assets/instagram.png"/>
-        </a>
+      <li v-for="menu in menus.edges[0].node.menuItems.nodes" :key="menu.id">
+          <nuxt-link :style="'font-size:'+`${page.acfNav.tailleDuMenu}`+'px'"  :to="`${menu.url}`">
+            {{ menu.label }}
+          </nuxt-link>
+      </li>
+      <a href="https://www.instagram.com/jeanmarques.jm/">
+        <img class="logo_instagram" src="@/assets/instagram.png"/>
+      </a>
     </ul>
 
-    </ul>
   </div>
 </template>
 
 <script>
   import gql from 'graphql-tag';
   import page from '~/queries/getNav.gql';
+  import menus from '~/queries/getMenu.gql';
 
-  const MENUS = gql`
-          query MyQuery {
-            menus {
-              edges {
-                node {
-                  id
-                  name
-                  menuItems {
-                    nodes {
-                      label
-                      id
-                      url
-                    }
-                  }
-                }
-              }
-            }
-          },
-        `
 
   export default {
 
-    data() {
-      return {
-        menus: []
-      }
-    },
     apollo: {
-      
       menus: {
-        query: MENUS
+        query: menus
       },
       page: {
         query: page
       },
 
       generalSettings: gql`
-      query MyQuery {
-        generalSettings {
-          title
-        }
+        query {
+          generalSettings {
+            title
+          }
       }
       `,
     }
-
   }
 </script>
 
