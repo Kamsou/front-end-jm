@@ -17,7 +17,8 @@
     <div class="flex_us numbers">
       <span>{{indexSlide + 1}}</span>
       <span>—</span>
-      <span>{{albums.nodes.length}}</span>
+      <!-- <span>{{albums.nodes.length}}</span> -->
+      {{albums.nodes.length}}
     </div>
 
     <div class="pagination">
@@ -43,7 +44,8 @@
 
 <script>
 import gql from 'graphql-tag'
-import albums from '~/queries/getAlbums.gql';
+// import albums from '~/queries/getAlbums.gql';
+import albums from '~/queries/getSerie.gql';
 
   export default {
     name: "Album",

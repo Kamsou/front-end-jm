@@ -1,14 +1,19 @@
 <template>
-  <div>
+  <div v-if="!$apollo.queries.posts.loading">
     <div class="w_posts" v-for="post in posts.nodes" :key="post.id">
-      <img v-if="post.acfArticles.image !== null" class="image" :src="post.acfArticles.image.mediaItemUrl"/>
+      <img 
+        v-if="post.acfArticles.image !== null" 
+        class="image" 
+        :src="post.acfArticles.image.mediaItemUrl"
+        />
       <div class="b_text">
         <p class="title">
           {{post.title}}
         </p>
         <div 
-        class="paragraph"   
-        v-html="post.acfArticles.text"/>
+          class="paragraph"   
+          v-html="post.acfArticles.text"
+        />
       </div>
     </div>
   </div>
@@ -26,6 +31,7 @@ import posts from '~/queries/getPosts.gql';
       }
     },
   }
+  
 </script>
 
 <style lang="scss" scoped>
