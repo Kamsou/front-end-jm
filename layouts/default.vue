@@ -9,14 +9,15 @@
 </template>
 
 <script>
+  import Menu from '~/components/Menu.vue'
   import page from '~/queries/getTypo.gql';
-export default {
-  apollo: {
-      page: {
-        query: page
+  export default {
+    apollo: {
+        page: {
+          query: page
+        },
       },
-    },
-}
+  }
 </script>
 
 <style>
