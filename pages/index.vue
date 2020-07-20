@@ -1,6 +1,7 @@
 <template>
   
-    <Articles />
+    <!-- <Articles /> -->
+    <h1>styley</h1>
   
 </template>
 
