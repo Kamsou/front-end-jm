@@ -1,8 +1,5 @@
 <template>
-  <div 
-  v-if="!$apollo.queries.page.loading" 
-  class="w_app" 
-  :style="'font-family:'+`${page.acfNomTypo.nomDeLaTypo}`" >
+  <div >
       <Menu/>
       <nuxt />
   </div>
