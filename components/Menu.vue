@@ -1,14 +1,12 @@
 <template>
-  <div class="w_menu" >
+  <div class="w_menu" v-if="!$apollo.queries.page.loading">
     <nuxt-link to="/">
-      <!-- <h1 :style="'font-size:'+`${page.acfNav.tailleDuTitre}`+'vw'" >{{generalSettings.title}}</h1> -->
+      <h1 :style="'font-size:'+`${page.acfNav.tailleDuTitre}`+'vw'" >{{generalSettings.title}}</h1>
     </nuxt-link>
     <ul>
-      <h1>yo</h1>
-        <!-- <li v-for="menu in menus.edges[0].node.menuItems.nodes" :key="menu.id">
-          {{ menu.label }} -->
-            <!-- <nuxt-link :style="'font-size:'+`${page.acfNav.tailleDuMenu}`+'vw'"  :to="`${menu.url}`">{{ menu.label }}</nuxt-link> -->
-        <!-- </li> -->
+        <li v-for="menu in menus.edges[0].node.menuItems.nodes" :key="menu.id">
+            <nuxt-link :style="'font-size:'+`${page.acfNav.tailleDuMenu}`+'vw'"  :to="`${menu.url}`">{{ menu.label }}</nuxt-link>
+        </li>
         <a href="https://www.instagram.com/jeanmarques.jm/">
           <img class="logo_instagram" src="@/assets/instagram.png"/>
         </a>
@@ -24,39 +22,39 @@
 
 
     
-    // apollo: {
-    //   page: {
-    //     query: page
-    //   },
+    apollo: {
+      page: {
+        query: page
+      },
 
-    //   menus: gql`
-    //     query MyQuery {
-    //       menus {
-    //         edges {
-    //           node {
-    //             id
-    //             name
-    //             menuItems {
-    //               nodes {
-    //                 label
-    //                 id
-    //                 url
-    //               }
-    //             }
-    //           }
-    //         }
-    //       }
-    //     },
-    //   `,
+      menus: gql`
+        query MyQuery {
+          menus {
+            edges {
+              node {
+                id
+                name
+                menuItems {
+                  nodes {
+                    label
+                    id
+                    url
+                  }
+                }
+              }
+            }
+          }
+        },
+      `,
 
-    //   generalSettings: gql`
-    //   query MyQuery {
-    //     generalSettings {
-    //       title
-    //     }
-    //   }
-    //   `,
-    // }
+      generalSettings: gql`
+      query MyQuery {
+        generalSettings {
+          title
+        }
+      }
+      `,
+    }
 
   }
 </script>
