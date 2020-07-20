@@ -1,5 +1,5 @@
 <template>
-     <div class="w_menu" v-if="!$apollo.queries.page.loading">
+     <div class="w_menu">
     <nuxt-link to="/">
       <h1 :style="'font-size:'+`${page.acfNav.tailleDuTitre}`+'vw'" >{{generalSettings.title}}</h1>
     </nuxt-link>
@@ -19,7 +19,6 @@
 <script>
    import gql from 'graphql-tag';
   import page from '~/queries/getNav.gql';
-
   export default {
 
 

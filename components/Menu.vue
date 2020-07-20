@@ -1,8 +1,9 @@
 <template>
   <div class="w_menu" >
+    
     <nuxt-link to="/">
     <h1>yaya</h1>
-      <!-- <h1 :style="'font-size:'+`${page.acfNav.tailleDuTitre}`+'vw'" >{{generalSettings.title}}</h1> -->
+
     </nuxt-link>
     <ul>
         <li v-for="menu in menus.edges[0].node.menuItems.nodes" :key="menu.id">
@@ -19,7 +20,6 @@
 <script>
   import gql from 'graphql-tag';
   // import page from '~/queries/getNav.gql';
-
   export default {
 
 
@@ -49,13 +49,13 @@
         },
       `,
 
-      generalSettings: gql`
-      query MyQuery {
-        generalSettings {
-          title
-        }
-      }
-      `,
+      // generalSettings: gql`
+      // query MyQuery {
+      //   generalSettings {
+      //     title
+      //   }
+      // }
+      // `,
     }
 
   }
