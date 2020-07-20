@@ -6,7 +6,7 @@
 </template>
 
 <script>
-   import gql from 'graphql-tag';
+  import gql from 'graphql-tag';
   import page from '~/queries/getNav.gql';
   export default {
 
@@ -17,8 +17,7 @@
       page: {
         query: page
       },
-      
-     
+
 
       generalSettings: gql`
       query MyQuery {

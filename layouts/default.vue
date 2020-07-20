@@ -6,9 +6,12 @@
 </template>
 
 <script>
-  import Menu from '~/components/Menu.vue'
   // import page from '~/queries/getTypo.gql';
+  import Menu from '@/components/Menu.vue';
   export default {
+    components: {
+      Menu
+    }
     // apollo: {
     //     page: {
     //       query: page

@@ -25,25 +25,6 @@
   import gql from 'graphql-tag';
   import page from '~/queries/getNav.gql';
 
-  const TEST = gql`
-         query MyQuery {
-           menus {
-             edges {
-               node {
-                 id
-                 name
-                 menuItems {
-                   nodes {
-                     label
-                     id
-                     url
-                   }
-                 }
-               }
-             }
-           }
-         },
-       `
 
   export default {
 
@@ -57,9 +38,7 @@
     },
     apollo: {
       
-      menus: {
-        query: TEST
-      },
+
       page: {
         query: page
       },
