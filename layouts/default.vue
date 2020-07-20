@@ -1,5 +1,5 @@
 <template>
-  <div >
+  <div>
       <Menu/>
       <nuxt />
   </div>
@@ -7,13 +7,13 @@
 
 <script>
   import Menu from '~/components/Menu.vue'
-  import page from '~/queries/getTypo.gql';
+  // import page from '~/queries/getTypo.gql';
   export default {
-    apollo: {
-        page: {
-          query: page
-        },
-      },
+    // apollo: {
+    //     page: {
+    //       query: page
+    //     },
+    //   },
   }
 </script>
 
