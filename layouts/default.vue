@@ -1,6 +1,6 @@
 <template>
   <div>
-      <Menu/>
+      <!-- <Menu/> -->
       <nuxt />
   </div>
 </template>
