@@ -2,65 +2,95 @@
   <div class="w_menu" >
     
     <nuxt-link to="/">
-    <h1>yaya</h1>
-
+      <h1 :style="'font-size:'+`${page.acfNav.tailleDuTitre}`+'vw'" >{{generalSettings.title}}</h1>
     </nuxt-link>
+
     <ul>
-      
-            {{ menus}}
-    
-        <!-- <li v-for="menu in menus.edges[0].node.menuItems.nodes" :key="menu.id">
-          {{menu.label}}
-            <nuxt-link :style="'font-size:'+`${page.acfNav.tailleDuMenu}`+'vw'"  :to="`${menu.url}`">{{ menu.label }}</nuxt-link>
-        </li> -->
+      <ul>
+        <li v-for="menu in menus.edges[0].node.menuItems.nodes" :key="menu.id">
+            <!-- <nuxt-link :style="'font-size:'+`${page.acfNav.tailleDuMenu}`+'vw'"  :to="`${menu.url}`">{{ menu.label }}</nuxt-link> -->
+            {{menu.label}}
+            
+        </li>
         <a href="https://www.instagram.com/jeanmarques.jm/">
           <img class="logo_instagram" src="@/assets/instagram.png"/>
         </a>
+    </ul>
+
     </ul>
   </div>
 </template>
 
 <script>
   import gql from 'graphql-tag';
-  // import page from '~/queries/getNav.gql';
+  import page from '~/queries/getNav.gql';
+
+  const TEST = gql`
+         query MyQuery {
+           menus {
+             edges {
+               node {
+                 id
+                 name
+                 menuItems {
+                   nodes {
+                     label
+                     id
+                     url
+                   }
+                 }
+               }
+             }
+           }
+         },
+       `
+
   export default {
 
-    props: 
-      ['menus']
-    ,
-    
+    // props: 
+    //   ['menus']
+    // ,
+    data() {
+      return {
+        menus: []
+      }
+    },
     apollo: {
-      // page: {
-      //   query: page
-      // },
+      
+      menus: {
+        query: TEST
+      },
+      page: {
+        query: page
+      },
 
-      menus: gql`
-        query MyQuery {
-          menus {
-            edges {
-              node {
-                id
-                name
-                menuItems {
-                  nodes {
-                    label
-                    id
-                    url
-                  }
-                }
-              }
-            }
-          }
-        },
-      `,
-
-      // generalSettings: gql`
-      // query MyQuery {
-      //   generalSettings {
-      //     title
-      //   }
-      // }
+      // menus: gql`
+      //   query MyQuery {
+      //     menus {
+      //       edges {
+      //         node {
+      //           id
+      //           name
+      //           menuItems {
+      //             nodes {
+      //               label
+      //               id
+      //               url
+      //             }
+      //           }
+      //         }
+      //       }
+      //     }
+      //   },
       // `,
+
+      generalSettings: gql`
+      query MyQuery {
+        generalSettings {
+          title
+        }
+      }
+      `,
     }
 
   }

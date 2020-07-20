@@ -1,21 +1,7 @@
 <template>
 <div>
-     <div class="w_menu">
-    <nuxt-link to="/">
-      <h1 :style="'font-size:'+`${page.acfNav.tailleDuTitre}`+'vw'" >{{generalSettings.title}}</h1>
-    </nuxt-link>
-    <ul>
-        <li v-for="menu in menus.edges[0].node.menuItems.nodes" :key="menu.id">
-            <nuxt-link :style="'font-size:'+`${page.acfNav.tailleDuMenu}`+'vw'"  :to="`${menu.url}`">{{ menu.label }}</nuxt-link>
-        </li>
-        <a href="https://www.instagram.com/jeanmarques.jm/">
-          <img class="logo_instagram" src="@/assets/instagram.png"/>
-        </a>
-    </ul>
-  </div>
-  <Menu :menus="menus"/>
-  </div>
     <!-- <Articles /> -->
+</div>
   
 </template>
 
@@ -24,31 +10,15 @@
   import page from '~/queries/getNav.gql';
   export default {
 
+
     
     apollo: {
   
       page: {
         query: page
       },
-      menus: gql`
-        query MyQuery {
-          menus {
-            edges {
-              node {
-                id
-                name
-                menuItems {
-                  nodes {
-                    label
-                    id
-                    url
-                  }
-                }
-              }
-            }
-          }
-        },
-      `,
+      
+     
 
       generalSettings: gql`
       query MyQuery {
