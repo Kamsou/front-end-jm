@@ -60,26 +60,6 @@
         query: page
       },
 
-      // menus: gql`
-      //   query MyQuery {
-      //     menus {
-      //       edges {
-      //         node {
-      //           id
-      //           name
-      //           menuItems {
-      //             nodes {
-      //               label
-      //               id
-      //               url
-      //             }
-      //           }
-      //         }
-      //       }
-      //     }
-      //   },
-      // `,
-
       generalSettings: gql`
       query MyQuery {
         generalSettings {
@@ -146,12 +126,12 @@
 /*$$$$$$$$$$$$$$$$$$ MOBILE $$$$$$$$$$$$$$$$$$$*/
 @media screen and (max-width: 768px) {
   .w_menu {
-    display: block;
+    display: flex;
     ul {
       display: flex;
       list-style: none;
-      padding-left: 0;
-      padding-top: 8vw;
+      padding-left: 9vw;
+      padding-top: 0vw;
 
       
 
