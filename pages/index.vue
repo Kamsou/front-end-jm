@@ -1,4 +1,5 @@
 <template>
+<div>
      <div class="w_menu">
     <nuxt-link to="/">
       <h1 :style="'font-size:'+`${page.acfNav.tailleDuTitre}`+'vw'" >{{generalSettings.title}}</h1>
@@ -12,6 +13,8 @@
         </a>
     </ul>
   </div>
+  <Menu :menus="menus"/>
+  </div>
     <!-- <Articles /> -->
   
 </template>
@@ -21,13 +24,12 @@
   import page from '~/queries/getNav.gql';
   export default {
 
-
     
     apollo: {
+  
       page: {
         query: page
       },
-
       menus: gql`
         query MyQuery {
           menus {

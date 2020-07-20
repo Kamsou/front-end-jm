@@ -6,10 +6,13 @@
 
     </nuxt-link>
     <ul>
-        <li v-for="menu in menus.edges[0].node.menuItems.nodes" :key="menu.id">
+      
+            {{ menus}}
+    
+        <!-- <li v-for="menu in menus.edges[0].node.menuItems.nodes" :key="menu.id">
           {{menu.label}}
-            <!-- <nuxt-link :style="'font-size:'+`${page.acfNav.tailleDuMenu}`+'vw'"  :to="`${menu.url}`">{{ menu.label }}</nuxt-link> -->
-        </li>
+            <nuxt-link :style="'font-size:'+`${page.acfNav.tailleDuMenu}`+'vw'"  :to="`${menu.url}`">{{ menu.label }}</nuxt-link>
+        </li> -->
         <a href="https://www.instagram.com/jeanmarques.jm/">
           <img class="logo_instagram" src="@/assets/instagram.png"/>
         </a>
@@ -22,7 +25,9 @@
   // import page from '~/queries/getNav.gql';
   export default {
 
-
+    props: 
+      ['menus']
+    ,
     
     apollo: {
       // page: {
