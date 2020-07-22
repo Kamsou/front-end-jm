@@ -1,7 +1,7 @@
 <template>
-<div>
+<div v-if="!$apollo.queries.albums.loading">
 
-  <div v-if="!$apollo.queries.albums.loading" class="wrapper">
+  <div  class="wrapper">
     <div class="carousel">
       <div class="w_albums" v-for="album in albums.nodes" :key="album.id">
         <div class="condition_if">
