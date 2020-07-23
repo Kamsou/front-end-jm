@@ -3,9 +3,9 @@
 
   <div  class="wrapper">
     <div class="carousel">
-      <div class="w_albums" v-for="album in albums.nodes" :key="album.id">
+      <div class="w_albums" v-for="album in albums.edges[0].node" :key="album.id">
         <div class="condition_if">
-          <div class="carousel" v-for="p in album.acfAlbums.serieDimages" :key="p.id">
+          <div class="carousel" v-for="p in album.serieDimages" :key="p.id">
             <img @click="prev" :src="p.mediaItemUrl" />
           </div>
         </div>
@@ -17,8 +17,7 @@
     <div class="flex_us numbers">
       <span>{{indexSlide + 1}}</span>
       <span>—</span>
-      <!-- <span>{{albums.nodes.length}}</span> -->
-      {{albums.nodes.length}}
+      <span>{{albums.edges[0].node.acfAlbums.serieDimages.length}}</span>
     </div>
 
     <div class="pagination">
@@ -38,21 +37,21 @@
       </div>
     </div>
   </div>
+  <!-- {{albums.edges[0].node.acfAlbums.serieDimages.length}} -->
 
 </div>
 </template>
 
 <script>
 import gql from 'graphql-tag'
-// import albums from '~/queries/getAlbums.gql';
-import albums from '~/queries/getSerie.gql';
+// import albums from '~/queries/getSerie.gql';
 
   export default {
     name: "Album",
 
     data() {
       return {
-        // slug: this.$route.params.slug,
+        slug: this.$route.params.slug,
         indexSlide: 0,
       };
     },
@@ -67,7 +66,7 @@ import albums from '~/queries/getSerie.gql';
 
 
         } else {
-          this.indexSlide = this.albums.nodes.length - 1;
+          this.indexSlide = this.albums.edges[0].node.acfAlbums.serieDimages.length - 1;
               let carousel = document.querySelector(".carousel");
               carousel.style.transform = `translateX(-${99.93 * this.indexSlide}%)`;
 
@@ -76,7 +75,7 @@ import albums from '~/queries/getSerie.gql';
       },
 
       next() {
-        if( this.indexSlide + 1 === this.albums.nodes.length) {
+        if( this.indexSlide + 1 === this.albums.edges[0].node.acfAlbums.serieDimages.length) {
           this.indexSlide = 0;
 
               let carousel = document.querySelector(".carousel");
@@ -95,7 +94,25 @@ import albums from '~/queries/getSerie.gql';
 
     apollo: {
       albums: {
-        query: albums,
+        query: gql`
+        query albums($slug: String!) {
+          albums(where: {name: $slug }) {
+              edges {
+                node {
+                  id
+                  slug
+                  acfAlbums {
+                  serieDimages {
+                    id
+                    mediaItemUrl
+                    title
+                  } 
+                }
+                }
+              }
+            }
+        }
+        `,
         prefetch: true,
         prefetch({route}) {
           return {
@@ -104,9 +121,9 @@ import albums from '~/queries/getSerie.gql';
         },
         variables() {
           return {
-            slug: this.$route.params.slug
+            slug: this.slug
           }
-        }
+        },
       }
     },
   }
@@ -116,8 +133,13 @@ import albums from '~/queries/getSerie.gql';
 
   .carousel {
     display: flex;
+    width: 36vw;
+    height: 35vw;
+    left: -0.3vw;
+    position: relative;
     img {
-      width: 34.722vw;
+      width: 100%;
+      height: auto;
     }
   }
 
@@ -170,11 +192,8 @@ import albums from '~/queries/getSerie.gql';
 @media screen and (max-width: 768px) {
 
   .carousel {
-
-    img {
-      width: 84vw;
-      height: 84vw;
-    }
+    width: 86vw;
+    height: 85vw;
   }
 
   .wrapper {

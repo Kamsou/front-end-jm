@@ -1,15 +1,16 @@
 query {
-  albums {
-    nodes {
-      id
-      title
-      slug
-      acfAlbums {
+  albums(where: {name: "parfois-encore"}) {
+    edges {
+      node {
+        id
+        slug
+        acfAlbums {
         serieDimages {
           id
           mediaItemUrl
           title
-        }
+        } 
+      }
       }
     }
   }

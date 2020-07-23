@@ -8,10 +8,10 @@
     </div>
   </div>
   <div v-if="!$apollo.queries.albums.loading" class="w_bloc_albums">
-    <div class="w_albums" v-for="album in albums.nodes" :key="album.id">
-      <nuxt-link :to="'/work/'+ album.slug">
-      <div class="c_imgTitle">
-        <img class="image" :src="album.acfAlbums.imageDeCouverture.mediaItemUrl"/>
+    <div class="w_albums" v-for="album in albums.nodes" :key="album.id" >
+      <nuxt-link :to="'/work/'+ album.slug" >
+      <div class="c_imgTitle" v-if="album.acfAlbums.imageDeCouverture !== null">
+        <img class="image"  :src="album.acfAlbums.imageDeCouverture.mediaItemUrl"/>
         <p class="title">{{album.title}}</p>
       </div>
       </nuxt-link>
