@@ -172,8 +172,9 @@ import albums from '~/queries/getSerie.gql';
   .carousel {
 
     img {
-      width: 83.722vw;
-      height: auto !important;
+      width: 346px;
+      height: 346px;
+
     }
   }
 
