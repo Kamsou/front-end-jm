@@ -172,9 +172,8 @@ import albums from '~/queries/getSerie.gql';
   .carousel {
 
     img {
-      width: 346px;
-      height: 346px;
-
+      width: 84vw;
+      height: 84vw;
     }
   }
 
@@ -182,7 +181,7 @@ import albums from '~/queries/getSerie.gql';
     padding-top: 13.333vw;
     overflow: hidden;
     max-width: 83.722vw;
-    height: 420px;
+    height: auto;
     /* margin: 2.778vw auto; */
   }
 
