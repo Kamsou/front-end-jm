@@ -173,7 +173,7 @@ import albums from '~/queries/getSerie.gql';
 
     img {
       width: 83.722vw;
-      height: auto;
+      height: auto !important;
     }
   }
 
@@ -181,6 +181,7 @@ import albums from '~/queries/getSerie.gql';
     padding-top: 13.333vw;
     overflow: hidden;
     max-width: 83.722vw;
+    height: 420px;
     /* margin: 2.778vw auto; */
   }
 
