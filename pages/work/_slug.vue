@@ -173,6 +173,7 @@ import albums from '~/queries/getSerie.gql';
 
     img {
       width: 83.722vw;
+      height: auto;
     }
   }
 
