@@ -6,7 +6,7 @@
       <div class="w_albums" v-for="album in albums" :key="album.id">
         <div class="condition_if">
           <div class="carousel" v-for="p in album.serieDimages" :key="p.id">
-            <img @click="prev" :src="p.sourceUrl" />
+            <img @click="next" :src="p.sourceUrl" />
           </div>
         </div>
       </div>
@@ -156,8 +156,13 @@ import gql from 'graphql-tag'
     display: flex;
   }
 
+  .flex_mob_pag {
+    max-width: 34.722vw;
+    margin: 2.778vw auto;
+  }
+
   .numbers {
-    text-align: center;
+    font-size: 10px;
   }
 
   .prev,
@@ -188,8 +193,9 @@ import gql from 'graphql-tag'
   }
 
   .pagination {
-  width: 70%;
-}
+    width: 70%;
+    display: none;
+  }
 
 /*$$$$$$$$$$$$$$$$$$ MOBILE $$$$$$$$$$$$$$$$$$$*/
 @media screen and (max-width: 768px) {
@@ -242,11 +248,13 @@ import gql from 'graphql-tag'
 
   .pagination {
     width: 50%;
+    display: inherit;
   }
 
   .flex_mob_pag {
     display: flex;
     align-items: center;
+    margin: 0;
   }
 
 }
