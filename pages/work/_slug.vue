@@ -6,7 +6,35 @@
       <div class="w_albums" v-for="album in albums.albums.edges[0].node" :key="album.id">
         <div class="condition_if">
           <div class="carousel" v-for="p in album.serieDimages" :key="p.id">
-            <img @click="next" :src="p.sourceUrl" />
+            <div class="container_img">
+              <img @click="next" :src="p.sourceUrl" />
+            
+              <p>{{p.title}}</p>
+              <div class="flex_mob_pag">
+                  <div class="flex_us numbers">
+                    <span>{{indexSlide + 1}}</span>
+                    <span>—</span>
+                    <span>{{albums.albums.edges[0].node.acfAlbums.serieDimages.length}}</span>
+                  </div>
+
+                  <div class="pagination">
+                    <div>
+                      <a class="prev" @click="prev">
+                        <svg width="20px" height="40px" viewBox="0 0 50 80" xml:space="preserve">
+                          <polyline fill="none" stroke="#000000" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" points="
+                        45.63,75.8 0.375,38.087 45.63,0.375 "/>
+                        </svg>  
+                      </a>
+                      <a class="next" @click="next">
+                        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="20px" height="40px" viewBox="0 0 50 80" xml:space="preserve">
+                          <polyline fill="none" stroke="#000000" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" points="
+                        0.375,0.375 45.63,38.087 0.375,75.8 "/>
+                        </svg>
+                      </a>
+                    </div>
+                  </div>
+                </div>
+              </div>
           </div>
         </div>
       </div>
@@ -14,7 +42,7 @@
   </div>
   <!-- {{albums.albums.edges[0].node}} -->
 
-  <div class="flex_mob_pag">
+  <!-- <div class="flex_mob_pag">
     <div class="flex_us numbers">
       <span>{{indexSlide + 1}}</span>
       <span>—</span>
@@ -37,7 +65,7 @@
         </a>
       </div>
     </div>
-  </div>
+  </div> -->
   <!-- {{albums.edges[0].node.acfAlbums.serieDimages.length}} -->
 
 </div>
@@ -122,21 +150,30 @@ import gql from 'graphql-tag'
 <style lang="scss" scoped>
 
   .carousel {
-    display: flex;
+    display: grid;
     width: 35.8vw;
-    height: 36vw;
-    left: -0.5vw;
+    height: 100%;
+    left: -0.55vw;
     position: relative;
-    img {
-      width: 100%;
-      height: auto;
+    .container_img {
+      img {
+        width: 100%;
+        height: auto;
+      }
+    }
+    p {
+      display: flex;
+      justify-content: flex-end;
+      margin: 1vw 1vw 0 0;
     }
   }
+
+  
 
   .wrapper {
     overflow: hidden;
     max-width: 34.722vw;
-    margin: 2.778vw auto;
+    margin: 2.778vw auto 1.778vw;
   }
 
   .condition_if {
@@ -145,7 +182,12 @@ import gql from 'graphql-tag'
 
   .flex_mob_pag {
     max-width: 34.722vw;
-    margin: 2.778vw auto;
+    margin: 0 0 0 0.778vw;
+
+    .title_picture {
+      display: flex;
+      justify-content: flex-end;
+    }
   }
 
   .numbers {

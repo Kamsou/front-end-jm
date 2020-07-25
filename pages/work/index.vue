@@ -35,23 +35,9 @@ import albums from '~/queries/getAlbums.gql';
           }
         }
       `;
-    
       const albums = await $graphql.request(query);
       return { albums };
     }
-    // apollo: {
-    //   albums() {
-    //     const prefetch = true;
-    //     const query = albums;
-    //     const update = function update(data) {
-    //       return data.albums.nodes
-    //     }
-    //     return {
-    //       query,
-    //       update
-    //     }
-    //   }
-    // },
   }
 </script>
 
