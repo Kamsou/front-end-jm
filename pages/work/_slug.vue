@@ -136,9 +136,9 @@ import gql from 'graphql-tag'
 
   .carousel {
     display: flex;
-    width: 36vw;
-    height: 35vw;
-    left: -0.3vw;
+    width: 35.8vw;
+    height: 36vw;
+    left: -0.5vw;
     position: relative;
     img {
       width: 100%;
