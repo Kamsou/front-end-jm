@@ -1,12 +1,12 @@
 <template>
-<div v-if="!$apollo.queries.albums.loading">
+<div >
 
   <div  class="wrapper">
     <div class="carousel">
-      <div class="w_albums" v-for="album in albums.edges[0].node" :key="album.id">
+      <div class="w_albums" v-for="album in albums" :key="album.id">
         <div class="condition_if">
           <div class="carousel" v-for="p in album.serieDimages" :key="p.id">
-            <img @click="prev" :src="p.mediaItemUrl" />
+            <img @click="prev" :src="p.sourceUrl" />
           </div>
         </div>
       </div>
@@ -17,7 +17,7 @@
     <div class="flex_us numbers">
       <span>{{indexSlide + 1}}</span>
       <span>—</span>
-      <span>{{albums.edges[0].node.acfAlbums.serieDimages.length}}</span>
+      <span>{{albums.acfAlbums.serieDimages.length}}</span>
     </div>
 
     <div class="pagination">
@@ -66,7 +66,7 @@ import gql from 'graphql-tag'
 
 
         } else {
-          this.indexSlide = this.albums.edges[0].node.acfAlbums.serieDimages.length - 1;
+          this.indexSlide = this.albums.acfAlbums.serieDimages.length - 1;
               let carousel = document.querySelector(".carousel");
               carousel.style.transform = `translateX(-${99.93 * this.indexSlide}%)`;
 
@@ -75,7 +75,7 @@ import gql from 'graphql-tag'
       },
 
       next() {
-        if( this.indexSlide + 1 === this.albums.edges[0].node.acfAlbums.serieDimages.length) {
+        if( this.indexSlide + 1 === this.albums.acfAlbums.serieDimages.length) {
           this.indexSlide = 0;
 
               let carousel = document.querySelector(".carousel");
@@ -104,7 +104,7 @@ import gql from 'graphql-tag'
                   acfAlbums {
                   serieDimages {
                     id
-                    mediaItemUrl
+                    sourceUrl(size: MEDIUM_LARGE)
                     title
                   } 
                 }
@@ -113,8 +113,7 @@ import gql from 'graphql-tag'
             }
         }
         `,
-        prefetch: true,
-        prefetch({route}) {
+        prefetch: ({ route }) => {
           return {
             slug: route.params.slug
           }
@@ -124,6 +123,10 @@ import gql from 'graphql-tag'
             slug: this.slug
           }
         },
+        update(data) {
+          console.log(data);
+          return data.albums.edges[0].node
+        }
       }
     },
   }
