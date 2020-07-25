@@ -2,10 +2,10 @@
 <div>
   <div class="w_bloc_albums">
     <div class="w_albums" v-for="album in albums" :key="album.id" >
-      <nuxt-link :to="'/work/'+ album.slug" >
-      <div class="c_imgTitle" v-if="album.acfAlbums.imageDeCouverture !== null">
-        <img class="image"  :src="album.acfAlbums.imageDeCouverture.mediaItemUrl"/>
-        <p class="title">{{album.title}}</p>
+      <nuxt-link :to="'/work/'+ album.nodes[0].slug" >
+      <div class="c_imgTitle" v-if="album.nodes[0].acfAlbums.imageDeCouverture !== null">
+        <img class="image"  :src="album.nodes[0].acfAlbums.imageDeCouverture.mediaItemUrl"/>
+        <p class="title">{{album.nodes[0].title}}</p>
       </div>
       </nuxt-link>
     </div>
@@ -18,19 +18,40 @@
 import albums from '~/queries/getAlbums.gql';
 
   export default {
-    apollo: {
-      albums() {
-        const prefetch = true;
-        const query = albums;
-        const update = function update(data) {
-          return data.albums.nodes
+    async asyncData({ $graphql, params }) {
+      const query = /* GraphQL */ `
+        query albums {
+          albums {
+            nodes {
+              id
+              title
+              slug
+              acfAlbums {
+                imageDeCouverture {
+                  mediaItemUrl
+                }
+              }
+            }
+          }
         }
-        return {
-          query,
-          update
-        }
-      }
-    },
+      `;
+    
+      const albums = await $graphql.request(query);
+      return { albums };
+    }
+    // apollo: {
+    //   albums() {
+    //     const prefetch = true;
+    //     const query = albums;
+    //     const update = function update(data) {
+    //       return data.albums.nodes
+    //     }
+    //     return {
+    //       query,
+    //       update
+    //     }
+    //   }
+    // },
   }
 </script>
 

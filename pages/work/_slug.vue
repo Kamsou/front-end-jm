@@ -3,7 +3,7 @@
 
   <div  class="wrapper">
     <div class="carousel">
-      <div class="w_albums" v-for="album in albums" :key="album.id">
+      <div class="w_albums" v-for="album in albums.albums.edges[0].node" :key="album.id">
         <div class="condition_if">
           <div class="carousel" v-for="p in album.serieDimages" :key="p.id">
             <img @click="next" :src="p.sourceUrl" />
@@ -12,12 +12,13 @@
       </div>
     </div>
   </div>
+  <!-- {{albums.albums.edges[0].node}} -->
 
   <div class="flex_mob_pag">
     <div class="flex_us numbers">
       <span>{{indexSlide + 1}}</span>
       <span>—</span>
-      <span>{{albums.acfAlbums.serieDimages.length}}</span>
+      <span>{{albums.albums.edges[0].node.acfAlbums.serieDimages.length}}</span>
     </div>
 
     <div class="pagination">
@@ -44,7 +45,6 @@
 
 <script>
 import gql from 'graphql-tag'
-// import albums from '~/queries/getSerie.gql';
 
   export default {
     name: "Album",
@@ -66,7 +66,7 @@ import gql from 'graphql-tag'
 
 
         } else {
-          this.indexSlide = this.albums.acfAlbums.serieDimages.length - 1;
+          this.indexSlide = this.albums.albums.edges[0].node.acfAlbums.serieDimages.length - 1;
               let carousel = document.querySelector(".carousel");
               carousel.style.transform = `translateX(-${99.93 * this.indexSlide}%)`;
 
@@ -75,7 +75,7 @@ import gql from 'graphql-tag'
       },
 
       next() {
-        if( this.indexSlide + 1 === this.albums.acfAlbums.serieDimages.length) {
+        if( this.indexSlide + 1 === this.albums.albums.edges[0].node.acfAlbums.serieDimages.length) {
           this.indexSlide = 0;
 
               let carousel = document.querySelector(".carousel");
@@ -90,11 +90,9 @@ import gql from 'graphql-tag'
         }
       }
     },
-    
 
-    apollo: {
-      albums: {
-        query: gql`
+    async asyncData({ $graphql, params }) {
+      const query = /* GraphQL */ `
         query albums($slug: String!) {
           albums(where: {name: $slug }) {
               edges {
@@ -112,22 +110,11 @@ import gql from 'graphql-tag'
               }
             }
         }
-        `,
-        prefetch: ({ route }) => {
-          return {
-            slug: route.params.slug
-          }
-        },
-        variables() {
-          return {
-            slug: this.slug
-          }
-        },
-        update(data) {
-          console.log(data);
-          return data.albums.edges[0].node
-        }
-      }
+      `;
+      const variables = { slug: params.slug };
+      const albums = await $graphql.request(query, variables);
+      console.log(albums);
+      return { albums };
     },
   }
 </script>

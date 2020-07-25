@@ -62,7 +62,27 @@ export default {
   */
   modules: [
     '@nuxtjs/axios',
+    ['nuxt-graphql-request'],
+    
   ],
+  graphql: {
+    /**
+     * Your GraphQL endpoint (required)
+     */
+    endpoint: 'https://api.jeanmarques.fr/graphql',
+ 
+    /**
+     * Enable support for AST
+     * default: false
+     */
+    AST: false,
+ 
+    /**
+     * Options
+     * See: https://github.com/prisma-labs/graphql-request
+     */
+    options: {},
+  },
   axios: {
     baseURL: `https://api.jeanmarques.fr/graphql`,
     debug: true
