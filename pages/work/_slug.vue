@@ -47,7 +47,7 @@
       <div class="w_albums" v-for="album in albums.albums.edges[0].node" :key="album.id">
         <div class="condition_if">
           <div class="carousel w_l_carousel" v-for="p in album.serieDimages" :key="p.id">
-              <div style="width: 90%" v-html="p.description"></div>
+              <div class="paragraph_description" v-html="p.description"></div>
           </div>
         </div>
       </div>
@@ -245,6 +245,10 @@ import gql from 'graphql-tag'
     left: 0.6vw;
   }
 
+  .paragraph_description {
+    width: 90%;
+  }
+
 /*$$$$$$$$$$$$$$$$$$ MOBILE $$$$$$$$$$$$$$$$$$$*/
 @media screen and (max-width: 768px) {
 
@@ -319,7 +323,7 @@ import gql from 'graphql-tag'
   }
 
   .w_l_carousel {
-    left: -1vw;
+    left: 2vw;
   }
 
 }
