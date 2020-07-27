@@ -1,6 +1,6 @@
 <template>
-<div >
-
+<div class="b_img_texte">
+  <!-- //////////// 1 ////////////-->
   <div  class="wrapper">
     <div class="carousel">
       <div class="w_albums" v-for="album in albums.albums.edges[0].node" :key="album.id">
@@ -8,7 +8,6 @@
           <div class="carousel" v-for="p in album.serieDimages" :key="p.id">
             <div class="container_img">
               <img @click="next" :src="p.sourceUrl" />
-            
               <p>{{p.title}}</p>
               <div class="flex_mob_pag">
                   <div class="flex_us numbers">
@@ -42,32 +41,18 @@
   </div>
   <!-- {{albums.albums.edges[0].node}} -->
 
-  <!-- <div class="flex_mob_pag">
-    <div class="flex_us numbers">
-      <span>{{indexSlide + 1}}</span>
-      <span>—</span>
-      <span>{{albums.albums.edges[0].node.acfAlbums.serieDimages.length}}</span>
-    </div>
-
-    <div class="pagination">
-      <div>
-        <a class="prev" @click="prev">
-          <svg width="20px" height="40px" viewBox="0 0 50 80" xml:space="preserve">
-            <polyline fill="none" stroke="#000000" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" points="
-          45.63,75.8 0.375,38.087 45.63,0.375 "/>
-          </svg>  
-        </a>
-        <a class="next" @click="next">
-          <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="20px" height="40px" viewBox="0 0 50 80" xml:space="preserve">
-            <polyline fill="none" stroke="#000000" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" points="
-          0.375,0.375 45.63,38.087 0.375,75.8 "/>
-          </svg>
-        </a>
+  <!-- //////////// 2 ////////////-->
+  <div  class="wrapper w_texte">
+    <div class="carousel w_carousel">
+      <div class="w_albums" v-for="album in albums.albums.edges[0].node" :key="album.id">
+        <div class="condition_if">
+          <div class="carousel w_l_carousel" v-for="p in album.serieDimages" :key="p.id">
+              <div style="width: 90%" v-html="p.description"></div>
+          </div>
+        </div>
       </div>
     </div>
-  </div> -->
-  <!-- {{albums.edges[0].node.acfAlbums.serieDimages.length}} -->
-
+  </div>
 </div>
 </template>
 
@@ -91,12 +76,16 @@ import gql from 'graphql-tag'
 
               let carousel = document.querySelector(".carousel");
               carousel.style.transform = `translateX(-${99.93 * this.indexSlide}%)`;
+              let carousel2 = document.querySelector(".w_texte .w_carousel");
+              carousel2.style.transform = `translateX(-${99.93 * this.indexSlide}%)`;
 
 
         } else {
           this.indexSlide = this.albums.albums.edges[0].node.acfAlbums.serieDimages.length - 1;
               let carousel = document.querySelector(".carousel");
               carousel.style.transform = `translateX(-${99.93 * this.indexSlide}%)`;
+              let carousel2 = document.querySelector(".w_texte .w_carousel");
+              carousel2.style.transform = `translateX(-${99.93 * this.indexSlide}%)`;
 
         }
         
@@ -108,12 +97,16 @@ import gql from 'graphql-tag'
 
               let carousel = document.querySelector(".carousel");
               carousel.style.transform = `translateX(-${99.93 * this.indexSlide}%)`;
+              let carousel2 = document.querySelector(".w_texte .w_carousel");
+              carousel2.style.transform = `translateX(-${99.93 * this.indexSlide}%)`;
 
 
         } else {
           this.indexSlide++
               let carousel = document.querySelector(".carousel");
               carousel.style.transform = `translateX(-${99.93 * this.indexSlide}%)`;
+               let carousel2 = document.querySelector(".w_texte .w_carousel");
+              carousel2.style.transform = `translateX(-${99.93 * this.indexSlide}%)`;
 
         }
       }
@@ -132,6 +125,7 @@ import gql from 'graphql-tag'
                     id
                     sourceUrl(size: MEDIUM_LARGE)
                     title
+                    description
                   } 
                 }
                 }
@@ -149,6 +143,14 @@ import gql from 'graphql-tag'
 
 <style lang="scss" scoped>
 
+  .b_img_texte {
+    display: flex;
+
+    .wrapper, .writting {
+      width: 50%;
+    }
+  }
+
   .carousel {
     display: grid;
     width: 35.8vw;
@@ -164,7 +166,7 @@ import gql from 'graphql-tag'
     p {
       display: flex;
       justify-content: flex-end;
-      margin: 1vw 1vw 0 0;
+      margin: 1vw 10px 0 0;
     }
   }
 
@@ -172,8 +174,12 @@ import gql from 'graphql-tag'
 
   .wrapper {
     overflow: hidden;
-    max-width: 34.722vw;
-    margin: 2.778vw auto 1.778vw;
+    max-width: 34.6vw;
+    margin: 2.778vw 2vw 1.778vw 11vw;
+  }
+
+  .writting {
+    margin: 2.778vw 5vw 1.778vw 5vw;
   }
 
   .condition_if {
@@ -192,6 +198,7 @@ import gql from 'graphql-tag'
 
   .numbers {
     font-size: 10px;
+    margin-left: 10px;
   }
 
   .prev,
@@ -226,12 +233,36 @@ import gql from 'graphql-tag'
     display: none;
   }
 
+  .w_texte {
+    margin: 2.778vw 2vw 1.778vw 5vw;
+  }
+
+  .w_carousel {
+    display: flex;
+  }
+
+  .w_l_carousel {
+    left: 0.6vw;
+  }
+
 /*$$$$$$$$$$$$$$$$$$ MOBILE $$$$$$$$$$$$$$$$$$$*/
 @media screen and (max-width: 768px) {
 
+  .b_img_texte {
+    display: block;
+
+    .wrapper, .writting {
+      width: 100%;
+    }
+  }
+
   .carousel {
     width: 86vw;
-    height: 85vw;
+    left: -0.75vw;
+
+    p {
+      margin: 1vw 3.5vw 0 0;
+    }
   }
 
   .wrapper {
@@ -239,13 +270,14 @@ import gql from 'graphql-tag'
     overflow: hidden;
     max-width: 83.722vw;
     height: auto;
+    margin: 0 auto;
     /* margin: 2.778vw auto; */
   }
 
 
   .numbers {
     text-align: right;
-    padding-right: 10px;
+    margin-left: 10px;
   }
 
   .prev,
@@ -284,6 +316,10 @@ import gql from 'graphql-tag'
     display: flex;
     align-items: center;
     margin: 0;
+  }
+
+  .w_l_carousel {
+    left: -1vw;
   }
 
 }
