@@ -105,6 +105,8 @@
     display: flex;
     ul {
       display: flex;
+      position: relative;
+      bottom: 12px;
       list-style: none;
       padding-left: 9vw;
       padding-top: 0vw;
@@ -130,6 +132,7 @@
         &::after {
           content: '/';
           padding-left: 0.347vw;
+          font-size: 15px;
         }
       }
     }

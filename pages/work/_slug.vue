@@ -135,7 +135,6 @@ import gql from 'graphql-tag'
       `;
       const variables = { slug: params.slug };
       const albums = await $graphql.request(query, variables);
-      console.log(albums);
       return { albums };
     },
   }
