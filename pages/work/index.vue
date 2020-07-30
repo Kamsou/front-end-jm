@@ -1,11 +1,12 @@
 <template>
 <div>
   <div class="w_bloc_albums">
-    <div class="w_albums" v-for="album in albums" :key="album.id" >
-      <nuxt-link :to="'/work/'+ album.nodes[0].slug" >
-      <div class="c_imgTitle" v-if="album.nodes[0].acfAlbums.imageDeCouverture !== null">
-        <img class="image"  :src="album.nodes[0].acfAlbums.imageDeCouverture.mediaItemUrl"/>
-        <p class="title">{{album.nodes[0].title}}</p>
+    <div class="w_albums" v-for="album in albums.albums.nodes" :key="album.id">
+    
+      <nuxt-link :to="'/work/'+ album.slug">
+      <div class="c_imgTitle" v-if="album.acfAlbums.imageDeCouverture !== null">
+        <img class="image"  :src="album.acfAlbums.imageDeCouverture.mediaItemUrl"/>
+        <p class="title">{{album.title}}</p>
       </div>
       </nuxt-link>
     </div>
@@ -15,7 +16,6 @@
 
 <script>
 
-import albums from '~/queries/getAlbums.gql';
 
   export default {
     async asyncData({ $graphql, params }) {
@@ -36,6 +36,7 @@ import albums from '~/queries/getAlbums.gql';
         }
       `;
       const albums = await $graphql.request(query);
+      console.log(albums);
       return { albums };
     }
   }
