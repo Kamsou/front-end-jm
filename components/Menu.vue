@@ -13,7 +13,7 @@
             {{ menu.label }}
           </nuxt-link>
       </li>
-      <a href="https://www.instagram.com/jeanmarques.jm/">
+      <a class="menu_logo_instagram" href="https://www.instagram.com/jeanmarques.jm/">
         <img class="logo_instagram" src="@/assets/instagram.png"/>
       </a>
     </ul>
@@ -69,8 +69,6 @@
     list-style: none;
     padding-left: 5vw;
 
-    
-
     li {
       padding-right: 0.347vw;
 
@@ -106,12 +104,16 @@
     ul {
       display: flex;
       position: relative;
-      bottom: 12px;
+      bottom: 0px;
       list-style: none;
       padding-left: 9vw;
       padding-top: 0vw;
 
-      
+      .menu_logo_instagram {
+        padding-left: 6px;
+        display: flex;
+        align-items: center;
+      }
 
       li {
         padding-right: 0.347vw;

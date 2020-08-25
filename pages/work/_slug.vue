@@ -262,9 +262,12 @@ import gql from 'graphql-tag'
   .carousel {
     width: 86vw;
     left: -0.75vw;
-
+    
     p {
       margin: 1vw 3.5vw 0 0;
+    }
+    .container_img {
+      width: 300px;
     }
   }
 
