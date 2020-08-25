@@ -160,6 +160,11 @@ import gql from 'graphql-tag'
       img {
         width: 100%;
         height: auto;
+        transform:scale(1); 
+        -webkit-transform:scale(1); 
+        -moz-transform:scale(1); 
+        -ms-transform:scale(1);
+        -o-transform:scale(1); 
       }
     }
     p {
