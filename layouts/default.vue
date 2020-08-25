@@ -27,6 +27,7 @@ html {
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
   box-sizing: border-box;
+  touch-action: none;
 }
 
 *,
@@ -58,7 +59,7 @@ a {
   }
 
   .w_app {
-    padding: 16vw 8vw 10.667vw;
+    padding: 0;
   }
 
 }
