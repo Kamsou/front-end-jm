@@ -59,7 +59,7 @@ a {
   }
 
   .w_app {
-    padding: 0;
+    padding: 10%;
   }
 
 }
