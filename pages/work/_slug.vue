@@ -265,14 +265,18 @@ import gql from 'graphql-tag'
   }
 
   .carousel {
-    width: 86vw;
-    left: -0.75vw;
+    width: 82vw;
+    left: -0.2vw;
     
     p {
       margin: 1vw 3.5vw 0 0;
     }
     .container_img {
       width: 100%;
+
+      img {
+        width: 94%;
+      }
     }
   }
 
@@ -338,8 +342,9 @@ import gql from 'graphql-tag'
 /*$$$$$$$$$$$$$$$$$$ MOBILE $$$$$$$$$$$$$$$$$$$*/
 @media screen and (max-width: 320px) {
   .carousel {
+    left: -0.2vw;
     .container_img {
-      width: 258px;
+      width: 100%;
     }
   }
 }
