@@ -156,6 +156,8 @@ import gql from 'graphql-tag'
     height: 100%;
     left: -0.55vw;
     position: relative;
+    touch-action: none;
+    
     .container_img {
       img {
         width: 100%;
