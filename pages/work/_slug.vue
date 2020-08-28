@@ -192,7 +192,7 @@ import gql from 'graphql-tag'
     display: flex;
   }
 
-  .flex_mob_pag {
+  /* .flex_mob_pag {
     max-width: 34.722vw;
     margin: 0 0 0 0.778vw;
 
@@ -200,14 +200,21 @@ import gql from 'graphql-tag'
       display: flex;
       justify-content: flex-end;
     }
+  } */
+
+  .flex_mob_pag {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 0;
   }
 
   .numbers {
     font-size: 10px;
-    margin-left: 10px;
+    margin-left: 20px;
   }
 
-  .prev,
+  /* .prev,
   .next {
     cursor: pointer;
     position: absolute;
@@ -216,27 +223,54 @@ import gql from 'graphql-tag'
     padding: 16px;
     color: black;
     font-weight: bold;
-    font-size: 25px;
+    font-size: 25px; */
     /* transition: 0.7s ease; */
-    border-radius: 0 4px 4px 0;
+    /* border-radius: 0 4px 4px 0;
     text-decoration: none;
 
     svg {
       width: 1.389vw;
       height: 2.778vw;
     }
+  } */
+  .prev,
+  .next {
+    cursor: pointer;
+    position: relative;
+    top: 0;
+    width: auto;
+    padding: 0px;
+    color: black;
+    font-weight: bold;
+    font-size: 25px;
+    /* transition: 0.7s ease; */
+    border-radius: 0 4px 4px 0;
+    text-decoration: none;
+
+    svg {
+    width: 1.389vw;
+    height: 1.278vw;
+    }
   }
 
-  .next {
+ .next {
+    right: 0;
+  }
+  .prev {
+    left: 0;
+  }
+  /* .next {
     right: 20.833vw;
   }
   .prev {
     left: 24.306vw;
-  }
+  } */
 
   .pagination {
-    width: 70%;
-    display: none;
+    /* width: 70%; */
+    /* display: none; */
+    width: 55%;
+    display: inherit;
   }
 
   .w_texte {
