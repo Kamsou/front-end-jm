@@ -1,7 +1,7 @@
 <template>
 <div class="b_img_texte">
   <!-- //////////// 1 ////////////-->
-  <div  class="wrapper">
+  <div class="wrapper">
     <div class="carousel">
       <div class="w_albums" v-for="album in albums.albums.edges[0].node" :key="album.id">
         <div class="condition_if">
@@ -69,6 +69,17 @@ import gql from 'graphql-tag'
       };
     },
 
+    mounted() {
+      var self = this;
+      window.addEventListener('keyup', function(event) {
+        if (event.keyCode === 37) { 
+          self.prev();
+        } else if (event.keyCode === 39) {
+          self.next();
+        }
+      })
+    },
+  
     methods: {
       prev() {
         if(this.indexSlide > 0) {
@@ -111,6 +122,8 @@ import gql from 'graphql-tag'
         }
       }
     },
+
+  
 
     async asyncData({ $graphql, params }) {
       const query = /* GraphQL */ `
